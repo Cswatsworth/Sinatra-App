@@ -4,9 +4,12 @@
 <h1>What Is Your 3 Favorite Numbers?</h1>
 
 <form action='favorite' method='post'>
-		<input type = "text" name = "favorite_input">
-		<input type = 'text' name = "user_age">
-		<input type = "text" name = "user_name">
+		<input type = "number" name = "user_num1">
+		<input type = "number" name = "user_num2">
+		<input type = "number" name = "user_num3">
+
+		<input type = 'text' name = "user_age" value = <%=user_age%> hidden>
+		<input type = "text" name = "user_name" value = <%=user_name%> hidden>
 		<p><input type='submit'></p>
 
 </form></center>

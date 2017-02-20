@@ -1,5 +1,5 @@
 require 'sinatra'
-require_relative 'ex_1.rb'
+require_relative 'addition.rb'
 
 get '/' do  
 
@@ -8,22 +8,29 @@ get '/' do
 end
 
 post '/name' do 
-	user_name = params[:name_input]
+	user_name = params[:user_name]
 	erb :age, :locals => {:user_name => user_name}
 
 end
 
 post '/age' do
-	age_input = params[:age_input]
-	user_name = params[:user_input]
-	erb :favorite, :locals => {:age_input => age_input}
+	user_name = params[:user_name]
+	user_age = params[:user_age]
+	erb :favorite, :locals => {:user_name => user_name, :user_age => user_age } 
 end
 
-# post '/favorite' do
-# 	favorite_input = params[:favorite_input]
-# 	age_input = params[:age_input]
-# 	user_name = params[:user_input]
-# end
+post '/favorite' do
+	user_name = params[:user_name]
+	user_age = params[:user_age]
+	user_num1 = params[:user_num1].to_i
+	user_num2 = params[:user_num2].to_i
+	user_num3 = params[:user_num3].to_i
+
+	favorite_total = sum(user_num1, user_num2, user_num3) 
+	results = difference(user_age, favorite_total)
+
+erb :results, :locals => {:user_name => user_name, :user_age => user_age, :user_num1 => user_num1, :user_num2 => user_num2, :user_num3 => user_num}
+end
 # Favorite Number Kata:
 # Create a app using Sinatra which will accept/pass variables using locals. Create 4 views
 # 1. Ask the user their name
